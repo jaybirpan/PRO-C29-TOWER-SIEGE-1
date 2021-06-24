@@ -7,7 +7,7 @@ class SlingShot{
             length: 20
         }        
         this.pointB = pointB
-        this.sling= Constraint.create(options);
+        this.sling = Constraint.create(options);
         World.add(world, this.sling);
     }
 
@@ -15,17 +15,18 @@ class SlingShot{
         this.sling.bodyA = null;
     }
 
-    display(){     
+    display(){ 
+        push();       
         if(this.sling.bodyA){
             var pointA = this.sling.bodyA.position;
             var pointB = this.pointB;
             strokeWeight(4);
             fill("red");
             line(pointA.x, pointA.y, pointB.x, pointB.y);
+            pop();
         }
     }
-
     attach(body){
-        this.sling.bodyB = body;
+        this.sling.bodyA = body;
     }
 }
